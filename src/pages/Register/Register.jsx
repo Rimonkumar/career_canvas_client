@@ -4,6 +4,7 @@ import registerLotte from '../../assets/Lotties/Register.json'
 import { AuthContext } from '../../provider/AuthProvider';
 import { Link } from 'react-router';
 import Swal from 'sweetalert2';
+import SocialLogin from '../Shared/SocialLogin';
 
 const Register = () => {
 
@@ -34,7 +35,7 @@ const Register = () => {
     };
 
     return (
-        <div className="hero bg-base-200 min-h-screen">
+        <div className="hero bg-base-200 min-h-3/4">
             <div className="hero-content flex-col lg:flex-row-reverse">
                 <div className="text-center lg:text-left">
                     <Lottie style={{ width: '300px' }} animationData={registerLotte} loop={true} />
@@ -55,6 +56,7 @@ const Register = () => {
                             </fieldset>
                             <p className='p-4'>If you have Already Account <Link className='text-amber-700' to='/signin'>SignIn</Link> </p>
                         </form>
+                        <SocialLogin></SocialLogin>
                     </div>
                 </div>
             </div>

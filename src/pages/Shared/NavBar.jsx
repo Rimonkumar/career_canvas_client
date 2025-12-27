@@ -4,7 +4,7 @@ import { AuthContext } from '../../provider/AuthProvider';
 
 const NavBar = () => {
     // FIX: Use AuthContext here
-    const { user, logOut } = useContext(AuthContext); 
+    const { user, logOut } = useContext(AuthContext);
 
     const Links = <>
         <li><NavLink to="/">Home</NavLink></li>
@@ -56,10 +56,10 @@ const NavBar = () => {
                                     <img src={user?.photoURL || "https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"} alt="User" />
                                 </div>
                             </div>
-                            <ul tabIndex={0} className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52">
-                                <li><Link to="/my-jobs">My Job Post</Link></li>
-                                <li><Link to="/application/me">My Applications</Link></li>
-                                <li><button onClick={logOut}>Logout</button></li>
+                            <ul tabIndex={0} className="mt-3 z-[1] text-amber-900 p-2 shadow menu menu-md dropdown-content bg-base-100 rounded-box w-52 font-medium">
+                                <li><Link to="/dashboard" className="py-3">See Dashboard</Link></li>
+                                <li><Link to="/application/me" className="py-3">My Applications</Link></li>
+                                <li><button onClick={logOut} className="py-3 text-red-600">Logout</button></li>
                             </ul>
                         </div>
                     </div>

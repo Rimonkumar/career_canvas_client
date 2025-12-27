@@ -2,13 +2,15 @@ import Lottie from 'lottie-react';
 import React, { use } from 'react';
 import LoginLotte from '../../assets/Lotties/Login.json';
 import { AuthContext } from '../../provider/AuthProvider';
-import { Link, useNavigate } from 'react-router';
+import { Link, useLocation, useNavigate } from 'react-router';
 import Swal from 'sweetalert2';
+import SocialLogin from '../Shared/SocialLogin';
 
 const SignIn = () => {
     const { signInUser } = use(AuthContext);
     const navigate = useNavigate();
-
+    const location = useLocation();
+const from = location.state || '/dashboard';
     const handleLogin = (e) => {
         e.preventDefault();
 
@@ -26,7 +28,7 @@ const SignIn = () => {
                     timer: 1500,
                     showConfirmButton: false
                 });
-                navigate('/');
+                navigate(from)
             })
             .catch(error => {
                 console.log(error.message);
@@ -40,7 +42,7 @@ const SignIn = () => {
     };
 
     return (
-        <div className="hero bg-base-200 min-h-screen">
+        <div className="hero bg-base-200 min-h-3/4">
             <div className="hero-content flex-col lg:flex-row-reverse">
                 <div className="text-center lg:text-left">
                     <Lottie style={{ width: '300px' }} animationData={LoginLotte} loop={true} />
@@ -59,8 +61,9 @@ const SignIn = () => {
                                 <div><a className="link link-hover">Forgot password?</a></div>
                                 <button className="btn btn-neutral mt-4">Login</button>
                             </fieldset>
-                            <p className='p-4'>If you Don't have Account <Link className='text-amber-700' to='/signup'>SignUp</Link> </p>
+                            <p className='p-4'>If you Don't have Account <Link className='text-amber-700' to='/register'>Register</Link> </p>
                         </form>
+                        <SocialLogin from= {from}></SocialLogin>
                     </div>
                 </div>
             </div>
