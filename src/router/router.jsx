@@ -13,6 +13,10 @@ import AllApplicants from '../pages/DashBoard/Pages/AllApplicants';
 import ManageJobs from '../pages/DashBoard/Pages/ManageJobs';
 import JobDetails from '../pages/JobDetails/JobDetails';
 import JobApply from '../pages/JobApply/JobApply';
+import ChangePassword from '../pages/DashBoard/Pages/ChangePassword';
+import MyPostedJobs from '../pages/DashBoard/Pages/MyPostedJobs';
+import PostedJobDetails from '../pages/DashBoard/Pages/PostedJobDetails';
+import ApplicantReview from '../pages/JobApply/ApplicantReview';
 
 const router = createBrowserRouter([
   {
@@ -35,13 +39,14 @@ const router = createBrowserRouter([
       {
         path: "jobs/:id",
         element: <JobDetails />,
-        
+
         loader: ({ params }) => fetch(`http://localhost:3000/jobs/${params.id}`)
       },
       {
         path: "/apply/:id",
-        element: <PrivateRoute> <JobApply></JobApply> </PrivateRoute> 
+        element: <PrivateRoute> <JobApply></JobApply> </PrivateRoute>
       },
+      
     ]
   },
   {
@@ -55,8 +60,17 @@ const router = createBrowserRouter([
       { index: true, element: <DashboardHome /> },
       { path: "profile", element: <Profile /> },
       { path: "postjob", element: <PostJob /> },
+      { path: "myPostedJobs", element: <MyPostedJobs></MyPostedJobs> },
+      { path: "myPostedJobs/:id", element: <PostedJobDetails /> },
       { path: "managejobs", element: <ManageJobs /> },
       { path: "applicants", element: <AllApplicants /> },
+      { path: "password", element: <ChangePassword></ChangePassword> },
+      {
+        path: "review-applicant/:id",
+        element: <ApplicantReview />
+      },
+
+
     ]
   }
 ]);
