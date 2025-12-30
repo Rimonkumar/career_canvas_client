@@ -1,6 +1,7 @@
 import { createUserWithEmailAndPassword, deleteUser, GoogleAuthProvider, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updatePassword, updateProfile } from 'firebase/auth';
 import React, { useState, createContext, useEffect } from 'react';
 import { auth } from '../services/firebase.init';
+import axios from 'axios';
 
 
 // This is what you must pass to useContext()
@@ -25,13 +26,27 @@ const AuthProvider = ({ children }) => {
     };
 
     useEffect(() => {
-        const unsubscribe = onAuthStateChanged(auth, currentUser => {
-            setUser(currentUser);
-            console.log('current user is', currentUser);
-            setLoading(false);
-        });
-        return () => unsubscribe();
-    }, []);
+    const unsubscribe = onAuthStateChanged(auth, currentUser => {
+        setUser(currentUser);
+        if (currentUser?.email) {
+            const userData = { email: currentUser.email };
+            axios.post('http://localhost:3000/jwt', userData,{
+                withCredentials: true
+            })
+                .then(res => {
+                    console.log('JWT response', res.data);
+                    const token = res.data.token;
+                    localStorage.setItem('career-help-token', token);
+                })
+                .catch(err => {
+                    console.error(err);
+                });
+        }
+        setLoading(false);
+        console.log('current user is', currentUser);
+    });
+    return () => unsubscribe();
+}, []);
 
     const updateUserProfile = (name, photo) => {
         return updateProfile(auth.currentUser, {

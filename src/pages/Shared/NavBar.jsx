@@ -8,10 +8,9 @@ const NavBar = () => {
 
     const Links = <>
         <li><NavLink to="/">Home</NavLink></li>
-        <li><NavLink to="/jobs">Find Jobs</NavLink></li>
-        <li><NavLink to="/employers">Employers</NavLink></li>
+        <li><a href="/#hot-jobs-section">Find Jobs</a></li>
         <li><NavLink to="/candidates">Candidates</NavLink></li>
-        <li><NavLink to="/blog">Blog</NavLink></li>
+        <li><NavLink to="/blog-section">Blog</NavLink></li>
     </>;
 
     return (

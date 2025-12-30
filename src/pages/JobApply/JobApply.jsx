@@ -39,7 +39,7 @@ const JobApply = () => {
                         showConfirmButton: false,
                         timer: 2000
                     });
-                    navigate('/dashboard/myApplications'); // Redirect to user's apps
+                    navigate('/dashboard/applicants'); // Redirect to user's apps
                 }
             })
             .catch(error => { 

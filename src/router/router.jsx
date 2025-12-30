@@ -17,6 +17,8 @@ import ChangePassword from '../pages/DashBoard/Pages/ChangePassword';
 import MyPostedJobs from '../pages/DashBoard/Pages/MyPostedJobs';
 import PostedJobDetails from '../pages/DashBoard/Pages/PostedJobDetails';
 import ApplicantReview from '../pages/JobApply/ApplicantReview';
+import HotJobs from '../pages/Home/HotJobs';
+import Blogs from '../pages/Blogs/Blogs';
 
 const router = createBrowserRouter([
   {
@@ -35,6 +37,14 @@ const router = createBrowserRouter([
         path: 'signin',
         element: <SignIn />
       },
+      {
+        path: 'blog-section',
+        element: <Blogs></Blogs>
+      },
+      {
+        path: "/hotJob",
+        element: <HotJobs jobPromise={fetch('http://localhost:3000/jobs').then(res => res.json())} />
+      },
 
       {
         path: "jobs/:id",
@@ -46,7 +56,7 @@ const router = createBrowserRouter([
         path: "/apply/:id",
         element: <PrivateRoute> <JobApply></JobApply> </PrivateRoute>
       },
-      
+
     ]
   },
   {
