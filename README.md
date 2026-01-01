@@ -20,6 +20,14 @@ https://career-help-protal.web.app/
 
 ## ▶️ Run Locally
 ```bash
-npm install
+
 npm run dev
-<img width="1880" height="801" alt="picc1" src="https://github.com/user-attachments/assets/852f1f81-e0a4-4f53-95b5-8f9e7572a581" /> <img width="1812" height="868" alt="pic2" src="https://github.com/user-attachments/assets/720030e7-b201-4606-a7df-65275baeceb7" /> <img width="1907" height="897" alt="pic3" src="https://github.com/user-attachments/assets/ea892c81-738c-4b96-8619-a005ae3522d4" /> <img width="1898" height="883" alt="pic4" src="https://github.com/user-attachments/assets/772823bd-9d14-42d7-9c18-9634217845f1" /> <img width="1915" height="888" alt="pic5" src="https://github.com/user-attachments/assets/d71ae7d1-f541-4332-ab7b-758849f91e01" /> <img width="1906" height="897" alt="pic 6" src="https://github.com/user-attachments/assets/ec2afe59-a320-4140-9ef9-466a7ee984b8" /> live link : https://career-help-protal.web.app/
+<img width="1880" height="801" alt="picc1" src="https://github.com/user-attachments/assets/c07a7cc5-73d5-4110-abc2-ae02f00a122a" />
+npm install<img width="1812" height="868" alt="pic2" src="https://github.com/user-attachments/assets/2f395382-0a03-4e28-8906-50bba5b76305" />
+
+<img width="1907" height="897" alt="pic3" src="https://github.com/user-attachments/assets/00fa5e88-4409-47b1-992b-1e685eef2d18" />
+
+<img width="1898" height="883" alt="pic4" src="https://github.com/user-attachments/assets/e1822c17-094b-45b5-8d84-7c64c550a27e" />
+<img width="1915" height="888" alt="pic5" src="https://github.com/user-attachments/assets/dec0308f-53fe-4bc6-a269-54af22d95422" />
+<img width="1906" height="897" alt="pic 6" src="https://github.com/user-attachments/assets/97746898-89a5-46a6-bbe1-f2a63841a63f" />
+
