@@ -10,9 +10,7 @@ const ApplicantReview = () => {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        fetch(`http://localhost:3000/job-applications/${id}`,{
-            credentials: 'include'
-        })
+        fetch(`http://localhost:3000/job-applications/${id}`)
             .then(res => res.json())
             .then(data => {
                 setApplication(data);

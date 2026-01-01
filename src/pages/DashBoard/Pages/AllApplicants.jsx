@@ -9,7 +9,7 @@ const AllApplicants = () => {
 
     useEffect(() => {
         if (user?.email) {
-            axios.get(`http://localhost:3000/job-applications?email=${user.email}`,{ withCredentials: true })
+            axios.get(`http://localhost:3000/job-applications?email=${user.email}`)
                 .then(res => {
                     setApplications(res.data);
                     setLoading(false);

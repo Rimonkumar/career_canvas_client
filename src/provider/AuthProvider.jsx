@@ -27,26 +27,12 @@ const AuthProvider = ({ children }) => {
 
     useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, currentUser => {
-        setUser(currentUser);
-        if (currentUser?.email) {
-            const userData = { email: currentUser.email };
-            axios.post('http://localhost:3000/jwt', userData,{
-                withCredentials: true
-            })
-                .then(res => {
-                    console.log('JWT response', res.data);
-                    const token = res.data.token;
-                    localStorage.setItem('career-help-token', token);
-                })
-                .catch(err => {
-                    console.error(err);
-                });
-        }
-        setLoading(false);
-        console.log('current user is', currentUser);
+      setUser(currentUser);
+      console.log('current user is',currentUser);
+      setLoading(false);
     });
     return () => unsubscribe();
-}, []);
+  }, []);
 
     const updateUserProfile = (name, photo) => {
         return updateProfile(auth.currentUser, {
