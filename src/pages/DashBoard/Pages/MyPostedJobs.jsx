@@ -2,18 +2,27 @@ import React, { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../../../provider/AuthProvider';
 import { Calendar, MapPin, Users } from 'lucide-react';
 import { Link } from 'react-router';
+import useApplicationApi from '../../../Hooks/useApplicationApi';
 
 const MyPostedJobs = () => {
     const { user } = useContext(AuthContext);
     const [jobs, setJobs] = useState([]);
+    const { myPostedJobsPromise } = useApplicationApi();
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         if (user?.email) {
-            fetch(`http://localhost:3000/jobs?email=${user?.email}`)
-                .then(res => res.json())
-                .then(data => setJobs(data));
+            myPostedJobsPromise(user.email)
+                .then(data => {
+                    setJobs(data);
+                    setLoading(false);
+                })
+                .catch(err => {
+                    console.error("Error loading jobs:", err);
+                    setLoading(false);
+                });
         }
-    }, [user?.email]);
+    }, [user?.email, myPostedJobsPromise]);
 
     return (
         <div className="max-w-6xl mx-auto p-4">

@@ -1,17 +1,21 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import useAuth from '../../../Hooks/useAuth';
+import useApplicationApi from '../../../Hooks/useApplicationApi';
 
 const AllApplicants = () => {
     const { user } = useAuth();
     const [applications, setApplications] = useState([]);
     const [loading, setLoading] = useState(true);
 
+    console.log("access token", user.accessToken);
+    const { myApplicationsPromise } = useApplicationApi();
+
     useEffect(() => {
         if (user?.email) {
-            axios.get(`http://localhost:3000/job-applications?email=${user.email}`)
-                .then(res => {
-                    setApplications(res.data);
+            myApplicationsPromise(user.email)
+                .then(data => {
+                    setApplications(data);
                     setLoading(false);
                 })
                 .catch(err => {
@@ -19,7 +23,7 @@ const AllApplicants = () => {
                     setLoading(false);
                 });
         }
-    }, [user?.email]);
+    }, [user?.email, myApplicationsPromise]);
 
     if (loading) return (
         <div className="flex justify-center items-center min-h-[400px]">
@@ -49,7 +53,7 @@ const AllApplicants = () => {
                             <th>Action</th>
                         </tr>
                     </thead>
-                    
+
                     {/* Table Body */}
                     <tbody>
                         {applications.length > 0 ? (
@@ -60,9 +64,9 @@ const AllApplicants = () => {
                                         <div className="flex items-center gap-3">
                                             <div className="avatar">
                                                 <div className="mask mask-squircle w-12 h-12 bg-gray-100 p-1">
-                                                    <img 
-                                                        src={app.jobDetails?.company_logo || 'https://via.placeholder.com/150'} 
-                                                        alt="Logo" 
+                                                    <img
+                                                        src={app.jobDetails?.company_logo || 'https://via.placeholder.com/150'}
+                                                        alt="Logo"
                                                     />
                                                 </div>
                                             </div>
@@ -84,9 +88,9 @@ const AllApplicants = () => {
                                         </span>
                                     </td>
                                     <td>
-                                        <a 
-                                            href={app.resume} 
-                                            target="_blank" 
+                                        <a
+                                            href={app.resume}
+                                            target="_blank"
                                             rel="noreferrer"
                                             className="btn btn-ghost btn-xs text-[#1967D2] font-bold hover:bg-blue-100"
                                         >

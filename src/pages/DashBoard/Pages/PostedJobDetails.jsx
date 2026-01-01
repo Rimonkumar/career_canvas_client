@@ -2,12 +2,14 @@ import React, { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router';
 import { FaMapMarkerAlt, FaBriefcase, FaCalendarAlt, FaEnvelope, FaUserCheck } from 'react-icons/fa';
 import Swal from 'sweetalert2';
+import useApplicationApi from '../../../Hooks/useApplicationApi';
 
 const PostedJobDetails = () => {
     const { id } = useParams();
     const [job, setJob] = useState(null);
     const [applications, setApplications] = useState([]);
     const [loading, setLoading] = useState(true);
+    const { myPostedJobsPromise } = useApplicationApi();
 
     useEffect(() => {
         if (!id) return;
